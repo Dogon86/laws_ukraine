@@ -1,0 +1,22 @@
+{
+  "laws": [
+    {
+      "title": "Закон Про відпустки",
+      "description": "Цей закон визначає правила надання відпусток та їх тривалість",
+      "file_path": "assets/laws/law1.txt",
+      "file_name": "assets/laws/law1.txt"
+    },
+    {
+      "title": "Кодекс законів про працю України",
+      "description": "Цей закон встановлює правила працевлаштування і трудові права",
+      "file_path": "assets/laws/law2.txt",
+      "file_name": "assets/laws/law2.txt"
+    },
+    {
+      "title": "Про організацію трудових відносин в умовах воєнного стану",
+      "description": "Цей закон встановлює правила трудових відносин в умовах воєнного стану",
+      "file_path": "assets/laws/law3.txt",
+      "file_name": "assets/laws/law3.txt"
+    }
+  ]
+}
