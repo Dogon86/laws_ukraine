@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-
 
 class LawDetailPage extends StatefulWidget {
   final String filePath;
@@ -23,7 +20,8 @@ class _LawDetailPageState extends State<LawDetailPage> {
   final _scrollController = ScrollController(); // Add ScrollController
 
   void _onForwardButtonPressed() {
-    final matches = RegExp(_searchText, caseSensitive: false).allMatches(_lawText);
+    final matches =
+        RegExp(_searchText, caseSensitive: false).allMatches(_lawText);
     if (matches.isNotEmpty) {
       if (_currentMatchIndex < matches.length - 1) {
         setState(() {
@@ -37,12 +35,16 @@ class _LawDetailPageState extends State<LawDetailPage> {
           widget._totalMatches = matches.length;
         });
       }
-      _scrollController.animateTo(matches.elementAt(_currentMatchIndex).start.toDouble(), duration: Duration(milliseconds: 100), curve: Curves.ease); // Scroll to match
+      _scrollController.animateTo(
+          matches.elementAt(_currentMatchIndex).start.toDouble(),
+          duration: Duration(milliseconds: 100),
+          curve: Curves.ease); // Scroll to match
     }
   }
 
   void _onBackwardButtonPressed() {
-    final matches = RegExp(_searchText, caseSensitive: false).allMatches(_lawText);
+    final matches =
+        RegExp(_searchText, caseSensitive: false).allMatches(_lawText);
     if (matches.isNotEmpty) {
       if (_currentMatchIndex > 0) {
         setState(() {
@@ -56,12 +58,17 @@ class _LawDetailPageState extends State<LawDetailPage> {
           widget._totalMatches = matches.length;
         });
       }
-      _scrollController.animateTo(matches.elementAt(_currentMatchIndex).start.toDouble(), duration: Duration(milliseconds: 100), curve: Curves.ease); // Scroll to match
+      _scrollController.animateTo(
+          matches.elementAt(_currentMatchIndex).start.toDouble(),
+          duration: Duration(milliseconds: 100),
+          curve: Curves.ease); // Scroll to match
     }
   }
 
-  void _scrollToMatch(int position) { // Add method to scroll to match
-    _scrollController.animateTo(position.toDouble(), duration: Duration(milliseconds: 500), curve: Curves.ease);
+  void _scrollToMatch(int position) {
+    // Add method to scroll to match
+    _scrollController.animateTo(position.toDouble(),
+        duration: Duration(milliseconds: 500), curve: Curves.ease);
   }
 
   @override
@@ -89,7 +96,8 @@ class _LawDetailPageState extends State<LawDetailPage> {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
-              controller: _scrollController, // Add ScrollController to SingleChildScrollView
+              controller:
+                  _scrollController, // Add ScrollController to SingleChildScrollView
               child: Text.rich(
                 _highlightOccurrences(_lawText, _searchText),
               ),
@@ -102,7 +110,7 @@ class _LawDetailPageState extends State<LawDetailPage> {
 
   Widget _buildTopBar(BuildContext context) {
     return Container(
-        color: Colors.yellow,
+      color: Colors.yellow,
       child: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Row(
@@ -119,7 +127,8 @@ class _LawDetailPageState extends State<LawDetailPage> {
                   setState(() {
                     _searchText = value;
                     _currentMatchIndex = 0;
-                    widget._totalMatches = 0; // reset total matches when search text changes
+                    widget._totalMatches =
+                        0; // reset total matches when search text changes
                   });
                 },
               ),
@@ -129,7 +138,8 @@ class _LawDetailPageState extends State<LawDetailPage> {
               onPressed: () {
                 setState(() {
                   _currentMatchIndex = 0;
-                  widget._totalMatches = 0; // reset total matches when search is triggered
+                  widget._totalMatches =
+                      0; // reset total matches when search is triggered
                 });
               },
               color: Colors.lightBlue,
@@ -201,5 +211,3 @@ class _LawDetailPageState extends State<LawDetailPage> {
     return TextSpan(children: children);
   }
 }
-
-
